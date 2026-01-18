@@ -5,9 +5,6 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
     @apply bg-white text-gray-900 font-sans antialiased;
   }
@@ -27,39 +24,20 @@
   }
 }
 
-/* Animations personnalisées */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #888; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
