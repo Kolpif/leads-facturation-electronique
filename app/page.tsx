@@ -255,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-amber-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <section className="py-20 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="container-custom">
           <div className="text-center mb-16 reveal" data-reveal>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
@@ -268,7 +268,7 @@ export default function Home() {
 
           <div className="relative">
             <div className="absolute inset-x-6 top-12 hidden md:block">
-              <div className="h-1 bg-gradient-to-r from-blue-400 via-amber-400 to-orange-400 rounded-full opacity-40" />
+              <div className="h-1 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400 rounded-full opacity-40" />
             </div>
 
             <div className="grid gap-6 md:grid-cols-4">
@@ -276,22 +276,22 @@ export default function Home() {
                 {
                   title: 'Étape 1',
                   text: 'Préparation et émission',
-                  color: 'from-blue-500 to-blue-300',
+                  color: 'from-primary-600 to-primary-400',
                 },
                 {
                   title: 'Étape 2',
                   text: 'Réception',
-                  color: 'from-amber-500 to-amber-300',
+                  color: 'from-secondary-600 to-secondary-400',
                 },
                 {
                   title: 'Étape 3',
                   text: 'Validation',
-                  color: 'from-orange-500 to-orange-300',
+                  color: 'from-primary-700 to-primary-500',
                 },
                 {
                   title: 'Étape 4',
                   text: 'Paiement',
-                  color: 'from-emerald-500 to-emerald-300',
+                  color: 'from-secondary-700 to-secondary-500',
                 },
               ].map((step, index) => (
                 <div key={step.title} className="reveal" data-reveal>
@@ -320,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* Benefits Infographic Section */}
-      <section className="py-20" id="benefices">
+      <section className="py-20 bg-gradient-to-br from-white via-primary-50/30 to-secondary-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" id="benefices">
         <div className="container-custom">
           <div className="text-center mb-16 reveal" data-reveal>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
@@ -336,27 +336,27 @@ export default function Home() {
               {
                 title: 'Économie 50-75% vs papier',
                 icon: TrendingUp,
-                color: 'from-blue-500/20 to-blue-500/5 dark:from-blue-500/30 dark:to-blue-500/10',
+                color: 'from-primary-500/20 to-primary-500/5 dark:from-primary-500/30 dark:to-primary-500/10',
               },
               {
                 title: 'Réduction coûts traitement 30%',
                 icon: CheckCircle2,
-                color: 'from-amber-400/30 to-amber-200/10 dark:from-amber-400/30 dark:to-amber-200/10',
+                color: 'from-secondary-500/20 to-secondary-500/5 dark:from-secondary-500/30 dark:to-secondary-500/10',
               },
               {
                 title: 'Optimisation temps de travail',
                 icon: Clock,
-                color: 'from-orange-400/30 to-orange-200/10 dark:from-orange-400/30 dark:to-orange-200/10',
+                color: 'from-primary-400/20 to-primary-200/5 dark:from-primary-400/30 dark:to-primary-200/10',
               },
               {
                 title: 'Diminution litiges',
                 icon: Shield,
-                color: 'from-blue-400/20 to-blue-200/5 dark:from-blue-400/20 dark:to-blue-200/10',
+                color: 'from-secondary-400/20 to-secondary-200/5 dark:from-secondary-400/30 dark:to-secondary-200/10',
               },
               {
                 title: 'Diminution délais de paiement',
                 icon: FileCheck,
-                color: 'from-amber-500/20 to-orange-200/10 dark:from-amber-500/20 dark:to-orange-200/10',
+                color: 'from-primary-600/20 to-secondary-300/10 dark:from-primary-600/30 dark:to-secondary-300/10',
               },
             ].map((benefit) => (
               <div key={benefit.title} className="reveal" data-reveal>
@@ -375,7 +375,7 @@ export default function Home() {
       </section>
 
       {/* Who Is Concerned Section */}
-      <section className="py-20 bg-gradient-to-br from-white via-blue-50 to-orange-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <section className="py-20 bg-gradient-to-br from-white via-primary-50 to-secondary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="container-custom">
           <div className="text-center mb-16 reveal" data-reveal>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
@@ -392,19 +392,19 @@ export default function Home() {
                 title: 'BtoB',
                 description: 'Entreprises facturant d\'autres entreprises en France.',
                 icon: Building2,
-                accent: 'from-blue-500/20 to-blue-500/5 dark:from-blue-500/30 dark:to-blue-500/10',
+                accent: 'from-primary-500/20 to-primary-300/5 dark:from-primary-500/30 dark:to-primary-300/10',
               },
               {
                 title: 'BtoC',
                 description: 'Entreprises facturant des particuliers, commerce ou services.',
                 icon: Users,
-                accent: 'from-amber-400/30 to-amber-200/10 dark:from-amber-400/30 dark:to-amber-200/10',
+                accent: 'from-secondary-500/20 to-secondary-300/5 dark:from-secondary-500/30 dark:to-secondary-300/10',
               },
               {
                 title: 'Export',
                 description: 'Ventes à des clients étrangers et opérations internationales.',
                 icon: ArrowRight,
-                accent: 'from-orange-400/30 to-orange-200/10 dark:from-orange-400/30 dark:to-orange-200/10',
+                accent: 'from-primary-400/20 to-secondary-300/10 dark:from-primary-400/30 dark:to-secondary-300/10',
               },
             ].map((target) => (
               <button
