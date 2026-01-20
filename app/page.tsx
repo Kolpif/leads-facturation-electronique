@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -10,6 +10,28 @@ import QuizForm from '@/components/QuizForm'
 
 export default function Home() {
   const [showQuiz, setShowQuiz] = useState(false)
+
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll('[data-reveal]'))
+    if (elements.length === 0) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+
+    elements.forEach((element) => observer.observe(element))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <main className="min-h-screen">
@@ -228,6 +250,187 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-amber-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+        <div className="container-custom">
+          <div className="text-center mb-16 reveal" data-reveal>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
+              Comment ça marche
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto">
+              Une chaîne de facturation fluide, pensée pour sécuriser chaque étape et accélérer vos encaissements.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute inset-x-6 top-12 hidden md:block">
+              <div className="h-1 bg-gradient-to-r from-blue-400 via-amber-400 to-orange-400 rounded-full opacity-40" />
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-4">
+              {[
+                {
+                  title: 'Étape 1',
+                  text: 'Préparation et émission',
+                  color: 'from-blue-500 to-blue-300',
+                },
+                {
+                  title: 'Étape 2',
+                  text: 'Réception',
+                  color: 'from-amber-500 to-amber-300',
+                },
+                {
+                  title: 'Étape 3',
+                  text: 'Validation',
+                  color: 'from-orange-500 to-orange-300',
+                },
+                {
+                  title: 'Étape 4',
+                  text: 'Paiement',
+                  color: 'from-emerald-500 to-emerald-300',
+                },
+              ].map((step, index) => (
+                <div key={step.title} className="reveal" data-reveal>
+                  <div className="relative p-6 h-full rounded-3xl bg-white/80 dark:bg-slate-900/70 border border-white/60 dark:border-slate-800 shadow-xl">
+                    <div className="flex items-center justify-between">
+                      <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${step.color} text-white flex items-center justify-center font-bold`}>
+                        {index + 1}
+                      </div>
+                      {index < 3 && (
+                        <ArrowRight className="h-6 w-6 text-gray-300 hidden md:block" />
+                      )}
+                    </div>
+                    <p className="mt-6 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                      {step.title}
+                    </p>
+                    <p className="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
+                      {step.text}
+                    </p>
+                    <div className={`absolute -top-6 -right-4 h-16 w-16 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl`} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Infographic Section */}
+      <section className="py-20" id="benefices">
+        <div className="container-custom">
+          <div className="text-center mb-16 reveal" data-reveal>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
+              Les bénéfices de la facturation électronique
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
+              Des gains immédiats sur les coûts, le temps et la qualité de votre cycle de facturation.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+            {[
+              {
+                title: 'Économie 50-75% vs papier',
+                icon: TrendingUp,
+                color: 'from-blue-500/20 to-blue-500/5 dark:from-blue-500/30 dark:to-blue-500/10',
+              },
+              {
+                title: 'Réduction coûts traitement 30%',
+                icon: CheckCircle2,
+                color: 'from-amber-400/30 to-amber-200/10 dark:from-amber-400/30 dark:to-amber-200/10',
+              },
+              {
+                title: 'Optimisation temps de travail',
+                icon: Clock,
+                color: 'from-orange-400/30 to-orange-200/10 dark:from-orange-400/30 dark:to-orange-200/10',
+              },
+              {
+                title: 'Diminution litiges',
+                icon: Shield,
+                color: 'from-blue-400/20 to-blue-200/5 dark:from-blue-400/20 dark:to-blue-200/10',
+              },
+              {
+                title: 'Diminution délais de paiement',
+                icon: FileCheck,
+                color: 'from-amber-500/20 to-orange-200/10 dark:from-amber-500/20 dark:to-orange-200/10',
+              },
+            ].map((benefit) => (
+              <div key={benefit.title} className="reveal" data-reveal>
+                <div className={`h-full rounded-3xl p-6 bg-gradient-to-br ${benefit.color} border border-white/60 dark:border-slate-800 shadow-lg`}>
+                  <div className="h-12 w-12 rounded-2xl bg-white/80 dark:bg-slate-900 flex items-center justify-center">
+                    <benefit.icon className="h-6 w-6 text-primary-600" />
+                  </div>
+                  <p className="mt-6 text-lg font-semibold text-gray-900 dark:text-white">
+                    {benefit.title}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who Is Concerned Section */}
+      <section className="py-20 bg-gradient-to-br from-white via-blue-50 to-orange-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+        <div className="container-custom">
+          <div className="text-center mb-16 reveal" data-reveal>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
+              Qui est concerné ?
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
+              Toutes les transactions sont progressivement concernées, y compris les échanges internationaux.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: 'BtoB',
+                description: 'Entreprises facturant d\'autres entreprises en France.',
+                icon: Building2,
+                accent: 'from-blue-500/20 to-blue-500/5 dark:from-blue-500/30 dark:to-blue-500/10',
+              },
+              {
+                title: 'BtoC',
+                description: 'Entreprises facturant des particuliers, commerce ou services.',
+                icon: Users,
+                accent: 'from-amber-400/30 to-amber-200/10 dark:from-amber-400/30 dark:to-amber-200/10',
+              },
+              {
+                title: 'Export',
+                description: 'Ventes à des clients étrangers et opérations internationales.',
+                icon: ArrowRight,
+                accent: 'from-orange-400/30 to-orange-200/10 dark:from-orange-400/30 dark:to-orange-200/10',
+              },
+            ].map((target) => (
+              <button
+                key={target.title}
+                type="button"
+                onClick={() => setShowQuiz(true)}
+                className="text-left reveal"
+                data-reveal
+              >
+                <div className={`h-full rounded-3xl p-6 bg-gradient-to-br ${target.accent} border border-white/70 dark:border-slate-800 shadow-lg hover:-translate-y-1 transition-transform`}>
+                  <div className="h-12 w-12 rounded-2xl bg-white/80 dark:bg-slate-900 flex items-center justify-center">
+                    <target.icon className="h-6 w-6 text-primary-600" />
+                  </div>
+                  <h3 className="mt-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                    {target.title}
+                  </h3>
+                  <p className="mt-2 text-gray-600 dark:text-gray-300">
+                    {target.description}
+                  </p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-primary-600 font-semibold">
+                    Explorer
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </button>
+            ))}
           </div>
         </div>
       </section>
