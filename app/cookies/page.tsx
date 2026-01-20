@@ -78,6 +78,9 @@ export default function CookiesPage() {
             <Link href="/mentions-legales" className="hover:text-white hover:underline">
               Mentions légales
             </Link>
+            <Link href="/cgv" className="hover:text-white hover:underline">
+              CGV
+            </Link>
             <Link href="/politique-confidentialite" className="hover:text-white hover:underline">
               Politique de confidentialité
             </Link>

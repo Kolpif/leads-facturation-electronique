@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import CookieBanner from '@/components/CookieBanner'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <body className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
         {children}
+        <CookieBanner />
       </body>
     </html>
   )

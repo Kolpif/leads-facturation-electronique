@@ -39,7 +39,7 @@ export default function MentionsLegalesPage() {
               <CardContent className="space-y-6 text-gray-700 leading-relaxed pt-6">
                 <div>
                   <h2 className="text-lg font-semibold text-gray-900 mb-2">Éditeur</h2>
-                  <p>WETEL GROUP, Brandon</p>
+                  <p>E-Facture 2026</p>
                 </div>
                 <div>
                   <h2 className="text-lg font-semibold text-gray-900 mb-2">Hébergeur</h2>
@@ -48,8 +48,8 @@ export default function MentionsLegalesPage() {
                 <div>
                   <h2 className="text-lg font-semibold text-gray-900 mb-2">Contact</h2>
                   <p>
-                    <a href="mailto:brandon@wetelgroup.com" className="text-primary-600 hover:underline">
-                      brandon@wetelgroup.com
+                    <a href="mailto:info@efacture2026.fr" className="text-primary-600 hover:underline">
+                      info@efacture2026.fr
                     </a>
                   </p>
                 </div>
@@ -73,6 +73,9 @@ export default function MentionsLegalesPage() {
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
             <Link href="/mentions-legales" className="hover:text-white hover:underline">
               Mentions légales
+            </Link>
+            <Link href="/cgv" className="hover:text-white hover:underline">
+              CGV
             </Link>
             <Link href="/politique-confidentialite" className="hover:text-white hover:underline">
               Politique de confidentialité
