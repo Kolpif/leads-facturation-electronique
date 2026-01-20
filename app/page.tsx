@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { CheckCircle, CheckCircle2, AlertTriangle, TrendingUp, Shield, Clock, ArrowRight, Building2, Users, FileCheck, FileText, CreditCard } from 'lucide-react'
+import { CheckCircle2, AlertTriangle, TrendingUp, Shield, Clock, ArrowRight, Building2, Users, FileCheck } from 'lucide-react'
 import QuizForm from '@/components/QuizForm'
 
 export default function Home() {
@@ -254,64 +254,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Step Timeline Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-yellow-50 dark:from-navy-900 dark:via-navy-800 dark:to-slate-950">
+      {/* How It Works Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-amber-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="container-custom">
           <div className="text-center mb-16 reveal" data-reveal>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
-              Comment ça marche en 4 étapes
+              Comment ça marche
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto">
-              Une trajectoire simple pour être prêt avant l'échéance.
+              Une chaîne de facturation fluide, pensée pour sécuriser chaque étape et accélérer vos encaissements.
             </p>
           </div>
 
           <div className="relative">
-            <div className="hidden md:block absolute left-10 right-10 top-10 h-1 bg-gradient-to-r from-blue-900 via-yellow-400 to-orange-500 opacity-40 rounded-full" />
-            <div className="grid gap-8 md:grid-cols-4">
+            <div className="absolute inset-x-6 top-12 hidden md:block">
+              <div className="h-1 bg-gradient-to-r from-blue-400 via-amber-400 to-orange-400 rounded-full opacity-40" />
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-4">
               {[
                 {
-                  title: 'Testez-vous',
-                  description: '2 minutes',
-                  icon: CheckCircle,
-                  color: 'bg-blue-900 text-white',
+                  title: 'Étape 1',
+                  text: 'Préparation et émission',
+                  color: 'from-blue-500 to-blue-300',
                 },
                 {
-                  title: 'Recevez votre diagnostic',
-                  description: '24h',
-                  icon: FileText,
-                  color: 'bg-yellow-400 text-gray-900',
+                  title: 'Étape 2',
+                  text: 'Réception',
+                  color: 'from-amber-500 to-amber-300',
                 },
                 {
-                  title: 'Choisissez votre solution',
-                  description: 'Accompagnement',
-                  icon: Shield,
-                  color: 'bg-orange-500 text-white',
+                  title: 'Étape 3',
+                  text: 'Validation',
+                  color: 'from-orange-500 to-orange-300',
                 },
                 {
-                  title: 'Soyez conforme',
-                  description: '2026',
-                  icon: CreditCard,
-                  color: 'bg-blue-700 text-white',
+                  title: 'Étape 4',
+                  text: 'Paiement',
+                  color: 'from-emerald-500 to-emerald-300',
                 },
               ].map((step, index) => (
                 <div key={step.title} className="reveal" data-reveal>
-                  <div className="relative h-full rounded-3xl bg-white/90 dark:bg-navy-800/80 border border-white/70 dark:border-slate-800 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <div className="relative p-6 h-full rounded-3xl bg-white/80 dark:bg-slate-900/70 border border-white/60 dark:border-slate-800 shadow-xl">
                     <div className="flex items-center justify-between">
-                      <div className={`h-12 w-12 rounded-full ${step.color} flex items-center justify-center text-lg font-bold`}>
+                      <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${step.color} text-white flex items-center justify-center font-bold`}>
                         {index + 1}
                       </div>
                       {index < 3 && (
                         <ArrowRight className="h-6 w-6 text-gray-300 hidden md:block" />
                       )}
                     </div>
-                    <step.icon className="h-6 w-6 text-primary-600 mt-6" />
-                    <h3 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
+                    <p className="mt-6 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                       {step.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                      {step.description}
                     </p>
+                    <p className="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
+                      {step.text}
+                    </p>
+                    <div className={`absolute -top-6 -right-4 h-16 w-16 rounded-full bg-gradient-to-br ${step.color} opacity-20 blur-2xl`} />
                   </div>
                 </div>
               ))}
@@ -320,38 +319,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits Two Column Section */}
-      <section className="py-20 bg-gradient-to-br from-white via-blue-50 to-orange-50 dark:from-navy-900 dark:via-navy-800 dark:to-slate-950">
-        <div className="container-custom grid gap-10 lg:grid-cols-2 items-start">
-          <div className="reveal" data-reveal>
-            <Card className="glass-morphism border-2 border-primary-100 dark:bg-navy-800/80 dark:border-slate-800 transition-all duration-300 hover:shadow-2xl">
-              <CardHeader>
-                <CardTitle className="text-3xl">Les bénéfices de la facturation électronique</CardTitle>
-                <CardDescription>
-                  Des gains financiers et opérationnels concrets dès la mise en conformité.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button onClick={() => setShowQuiz(true)} className="w-full">
-                  Démarrer le Quiz Gratuit
-                </Button>
-              </CardContent>
-            </Card>
+      {/* Benefits Infographic Section */}
+      <section className="py-20" id="benefices">
+        <div className="container-custom">
+          <div className="text-center mb-16 reveal" data-reveal>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
+              Les bénéfices de la facturation électronique
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
+              Des gains immédiats sur les coûts, le temps et la qualité de votre cycle de facturation.
+            </p>
           </div>
-          <div className="space-y-4 reveal" data-reveal>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
             {[
-              'Économie financière de 50% à 75% par rapport au papier',
-              'Réduction du coût de traitement d\'environ 30%',
-              'Optimisation du temps de travail',
-              'Diminution des litiges potentiels',
-              'Diminution des délais de paiement',
+              {
+                title: 'Économie 50-75% vs papier',
+                icon: TrendingUp,
+                color: 'from-blue-500/20 to-blue-500/5 dark:from-blue-500/30 dark:to-blue-500/10',
+              },
+              {
+                title: 'Réduction coûts traitement 30%',
+                icon: CheckCircle2,
+                color: 'from-amber-400/30 to-amber-200/10 dark:from-amber-400/30 dark:to-amber-200/10',
+              },
+              {
+                title: 'Optimisation temps de travail',
+                icon: Clock,
+                color: 'from-orange-400/30 to-orange-200/10 dark:from-orange-400/30 dark:to-orange-200/10',
+              },
+              {
+                title: 'Diminution litiges',
+                icon: Shield,
+                color: 'from-blue-400/20 to-blue-200/5 dark:from-blue-400/20 dark:to-blue-200/10',
+              },
+              {
+                title: 'Diminution délais de paiement',
+                icon: FileCheck,
+                color: 'from-amber-500/20 to-orange-200/10 dark:from-amber-500/20 dark:to-orange-200/10',
+              },
             ].map((benefit) => (
-              <div
-                key={benefit}
-                className="flex items-start gap-4 rounded-2xl bg-white/80 dark:bg-navy-800/80 border border-white/60 dark:border-slate-800 p-4 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <CheckCircle2 className="h-6 w-6 text-primary-600 mt-1" />
-                <p className="text-gray-700 dark:text-gray-200">{benefit}</p>
+              <div key={benefit.title} className="reveal" data-reveal>
+                <div className={`h-full rounded-3xl p-6 bg-gradient-to-br ${benefit.color} border border-white/60 dark:border-slate-800 shadow-lg`}>
+                  <div className="h-12 w-12 rounded-2xl bg-white/80 dark:bg-slate-900 flex items-center justify-center">
+                    <benefit.icon className="h-6 w-6 text-primary-600" />
+                  </div>
+                  <p className="mt-6 text-lg font-semibold text-gray-900 dark:text-white">
+                    {benefit.title}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -359,14 +375,14 @@ export default function Home() {
       </section>
 
       {/* Who Is Concerned Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-br from-white via-blue-50 to-orange-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="container-custom">
           <div className="text-center mb-16 reveal" data-reveal>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
               Qui est concerné ?
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
-              Des échanges nationaux aux opérations export, tous les flux sont concernés.
+              Toutes les transactions sont progressivement concernées, y compris les échanges internationaux.
             </p>
           </div>
 
@@ -374,24 +390,21 @@ export default function Home() {
             {[
               {
                 title: 'BtoB',
-                description: 'Factures entre entreprises',
-                badge: 'Obligatoire',
+                description: 'Entreprises facturant d\'autres entreprises en France.',
                 icon: Building2,
-                accent: 'from-blue-500/20 to-blue-200/10',
+                accent: 'from-blue-500/20 to-blue-500/5 dark:from-blue-500/30 dark:to-blue-500/10',
               },
               {
                 title: 'BtoC',
-                description: 'Factures entreprises et particuliers',
-                badge: 'E-reporting',
+                description: 'Entreprises facturant des particuliers, commerce ou services.',
                 icon: Users,
-                accent: 'from-yellow-400/30 to-yellow-200/10',
+                accent: 'from-amber-400/30 to-amber-200/10 dark:from-amber-400/30 dark:to-amber-200/10',
               },
               {
                 title: 'Export',
-                description: 'Factures clients étrangers',
-                badge: 'International',
+                description: 'Ventes à des clients étrangers et opérations internationales.',
                 icon: ArrowRight,
-                accent: 'from-orange-400/30 to-orange-200/10',
+                accent: 'from-orange-400/30 to-orange-200/10 dark:from-orange-400/30 dark:to-orange-200/10',
               },
             ].map((target) => (
               <button
@@ -401,8 +414,8 @@ export default function Home() {
                 className="text-left reveal"
                 data-reveal
               >
-                <div className={`h-full rounded-3xl p-6 bg-gradient-to-br ${target.accent} dark:from-navy-800 dark:to-slate-900 border border-white/60 dark:border-slate-800 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}>
-                  <div className="h-12 w-12 rounded-2xl bg-white/80 dark:bg-navy-800 flex items-center justify-center">
+                <div className={`h-full rounded-3xl p-6 bg-gradient-to-br ${target.accent} border border-white/70 dark:border-slate-800 shadow-lg hover:-translate-y-1 transition-transform`}>
+                  <div className="h-12 w-12 rounded-2xl bg-white/80 dark:bg-slate-900 flex items-center justify-center">
                     <target.icon className="h-6 w-6 text-primary-600" />
                   </div>
                   <h3 className="mt-6 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -411,58 +424,12 @@ export default function Home() {
                   <p className="mt-2 text-gray-600 dark:text-gray-300">
                     {target.description}
                   </p>
-                  <span className="mt-4 inline-flex items-center rounded-full bg-white/80 dark:bg-navy-800 px-3 py-1 text-xs font-semibold text-gray-700 dark:text-gray-200">
-                    {target.badge}
+                  <span className="mt-6 inline-flex items-center gap-2 text-primary-600 font-semibold">
+                    Explorer
+                    <ArrowRight className="h-4 w-4" />
                   </span>
                 </div>
               </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Key Dates Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-yellow-50 dark:from-navy-900 dark:via-navy-800 dark:to-slate-950">
-        <div className="container-custom">
-          <div className="text-center mb-16 reveal" data-reveal>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">
-              Les dates clés 2026
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
-              Anticipez le calendrier officiel pour éviter toute rupture de conformité.
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto space-y-10">
-            {[
-              {
-                date: 'Septembre 2026',
-                label: 'Obligation pour grandes entreprises',
-                color: 'bg-blue-900',
-              },
-              {
-                date: 'Décembre 2026',
-                label: 'Extension ETI',
-                color: 'bg-yellow-400',
-              },
-              {
-                date: '2027',
-                label: 'Toutes les entreprises',
-                color: 'bg-orange-500',
-              },
-            ].map((milestone, index) => (
-              <div key={milestone.date} className="relative pl-10 reveal" data-reveal>
-                {index < 2 && (
-                  <span className="absolute left-4 top-8 h-full w-px bg-gray-200 dark:bg-slate-700" />
-                )}
-                <span className={`absolute left-0 top-1 h-8 w-8 rounded-full ${milestone.color} flex items-center justify-center text-white font-bold shadow-lg`}>
-                  {index + 1}
-                </span>
-                <div className="rounded-2xl bg-white/80 dark:bg-navy-800/80 border border-white/70 dark:border-slate-800 p-5 shadow-md transition-all duration-300 hover:shadow-xl">
-                  <p className="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">{milestone.date}</p>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white mt-1">{milestone.label}</p>
-                </div>
-              </div>
             ))}
           </div>
         </div>

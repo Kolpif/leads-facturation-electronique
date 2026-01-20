@@ -44,10 +44,6 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        navy: {
-          800: "#0b1f3a",
-          900: "#071327",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
