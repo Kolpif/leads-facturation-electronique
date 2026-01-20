@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -274,6 +275,17 @@ export default function Home() {
               impots.gouv.fr
             </a>
           </p>
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
+            <Link href="/mentions-legales" className="hover:text-white hover:underline">
+              Mentions légales
+            </Link>
+            <Link href="/politique-confidentialite" className="hover:text-white hover:underline">
+              Politique de confidentialité
+            </Link>
+            <Link href="/cookies" className="hover:text-white hover:underline">
+              Politique de cookies
+            </Link>
+          </div>
         </div>
       </footer>
     </main>
