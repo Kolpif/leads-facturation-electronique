@@ -100,40 +100,61 @@ export default function QuizForm({ onClose }: { onClose: () => void }) {
     }
   }
 
-  const handleBack = () => {
-    if (step > 1) setStep(step - 1)
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsSubmitting(true)
 
-  const handleSubmit = async () => {
-    if (!validateStep()) return
-    
-    setLoading(true)
-    try {
-      // Validate SIREN with INSEE API
-      await axios.post('/api/validate-siren', { siren: formData.siren })
-      
-      // Submit lead
-      await axios.post('/api/submit-lead', formData)
-      
-      setSubmitted(true)
-    } catch (error) {
-      console.error('Error:', error)
-      alert('Une erreur est survenue. Veuillez réessayer.')
-    } finally {
-      setLoading(false)
+  try {
+    // Envoyer à Formspree
+    const response = await fetch('https://formspree.io/f/mdaadbvw', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        nom: formData.firstName + ' ' + formData.lastName,
+        email: formData.email,
+        telephone: formData.phone,
+        entreprise: formData.companyName,
+        siren: formData.siren,
+        taille: formData.companySize,
+        secteur: formData.sector,
+        factures_par_mois: formData.invoicesPerMonth,
+        logiciel_actuel: formData.currentSoftware,
+        delai: formData.timeline,
+        ca: formData.ca,
+        score: score,
+        tier: tier,
+      }),
+    })
+
+    if (response.ok) {
+      // Succès !
+      setShowSuccess(true)
+      setFormData({
+        companySize: '',
+        sector: '',
+        invoicesPerMonth: '',
+        currentSoftware: '',
+        timeline: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        companyName: '',
+        siren: '',
+        ca: '',
+      })
+    } else {
+      alert('Erreur lors de l\'envoi. Veuillez réessayer.')
     }
+  } catch (error) {
+    console.error('Erreur:', error)
+    alert('Erreur de connexion. Veuillez réessayer.')
+  } finally {
+    setIsSubmitting(false)
   }
-
-  const Option = ({ icon: Icon, title, description, value, selected, onClick }: any) => (
-    <button
-      onClick={onClick}
-      className={`
-        w-full p-6 rounded-xl border-2 text-left transition-all
-        ${selected 
-          ? 'border-primary-600 bg-primary-50 shadow-lg scale-105' 
-          : 'border-gray-200 hover:border-primary-300 hover:shadow-md'
-        }
-      `}
+}
     >
       <div className="flex items-start gap-4">
         <div className={`
