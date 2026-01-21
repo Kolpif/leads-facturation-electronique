@@ -24,6 +24,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className="scroll-smooth">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="63NXTiEfKGFkOaH7IvaLFKRaGiReExcmIJWOivm_yFk"
+        />
+      </head>
       <body className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
         {children}
         <CookieBanner />
