@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { CheckCircle2, AlertTriangle, TrendingUp, Shield, Clock, ArrowRight, Building2, Users, FileCheck } from 'lucide-react'
 import QuizForm from '@/components/QuizForm'
 
