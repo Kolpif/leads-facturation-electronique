@@ -38,13 +38,21 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-50 glass-morphism">
         <div className="container-custom py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <FileCheck className="h-8 w-8 text-primary-600" />
               <span className="text-2xl font-display font-bold text-gradient">
                 E-Facture 2026
               </span>
             </div>
+            <nav className="flex items-center gap-4 text-sm font-semibold text-gray-700">
+              <Link href="/" className="hover:text-primary-600">
+                Accueil
+              </Link>
+              <Link href="/blog" className="hover:text-primary-600">
+                Blog
+              </Link>
+            </nav>
             <Button 
               onClick={() => setShowQuiz(true)}
               size="sm"
